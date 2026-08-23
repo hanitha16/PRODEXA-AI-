@@ -51,13 +51,17 @@ function AppRoutes() {
       <Route path="/login"  element={<PublicOnlyRoute><Login /></PublicOnlyRoute>} />
       <Route path="/signup" element={<PublicOnlyRoute><SignUp /></PublicOnlyRoute>} />
 
+      {/* Public Pages with App Layout (for hackathon evaluators) */}
+      <Route element={<AuthenticatedLayout />}>
+        <Route path="/validation" element={<ValidationCenter />} />
+      </Route>
+
       {/* Protected authenticated shell */}
       <Route element={<ProtectedRoute><AuthenticatedLayout /></ProtectedRoute>}>
         <Route path="/dashboard"  element={<Dashboard />} />
         <Route path="/analyze"    element={<AnalyzeProduct />} />
         <Route path="/processing" element={<ProcessingPipeline />} />
         <Route path="/extraction" element={<ExtractionResults />} />
-        <Route path="/validation" element={<ValidationCenter />} />
         <Route path="/enrichment" element={<AIEnrichment />} />
         <Route path="/quality"    element={<DataQualityScore />} />
         <Route path="/review"     element={<ReviewCenter />} />
