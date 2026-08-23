@@ -102,7 +102,7 @@ export class ParserEngine {
       } else if (lower.includes("manufacturer") || lower.includes("brand") || lower.includes("vendor") || lower.includes("make")) {
         mappedField = "brand";
         confidence = 98;
-      } else if (lower.includes("desc") || lower.includes("detail") || lower.includes("title")) {
+      } else if (lower.includes("desc") || lower.includes("detail") || lower.includes("title") || lower.includes("name") || lower.includes("product")) {
         mappedField = "description";
         confidence = 95;
       } else if (lower.includes("volt") || lower.includes("supply")) {

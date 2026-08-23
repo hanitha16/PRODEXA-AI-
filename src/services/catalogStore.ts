@@ -230,6 +230,31 @@ class CatalogStore {
     return { dataset, job, products: generatedProducts };
   }
 
+  /**
+   * Adds or replaces a dataset and its products in the store (used by hackathonPipeline)
+   */
+  public addDatasetAndProducts(
+    dataset: Dataset,
+    job: ProcessingJob,
+    products: Product[],
+    duplicateGroups: DuplicateGroup[]
+  ) {
+    this.datasets = [dataset, ...this.datasets.filter(d => d.id !== dataset.id)];
+    this.products = [...products, ...this.products.filter(p => p.datasetId !== dataset.id)];
+    this.jobs = [job, ...this.jobs.filter(j => j.id !== job.id)];
+    
+    const productIds = new Set(products.map(p => p.id));
+    this.duplicateGroups = [
+      ...duplicateGroups,
+      ...this.duplicateGroups.filter(dg => !dg.products.some(p => productIds.has(p.id)))
+    ];
+
+    this.activeDatasetId = dataset.id;
+    this.activeProductId = products[0]?.id || null;
+
+    this.saveToStorage();
+  }
+
   // ==========================================
   // Queries
   // ==========================================
