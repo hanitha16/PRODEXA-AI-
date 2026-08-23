@@ -42,7 +42,12 @@ function AppRoutes() {
   return (
     <Routes>
       {/* Public pages */}
-      <Route path="/" element={<PublicOnlyRoute><Splash /></PublicOnlyRoute>} />
+      {/* 
+        Removed PublicOnlyRoute from Splash so it appears on initial application load at "/"
+        even if the user is already authenticated (restoring the expected splash behavior).
+        The CTA buttons will seamlessly redirect to dashboard via /login's PublicOnlyRoute.
+      */}
+      <Route path="/" element={<Splash />} />
       <Route path="/login"  element={<PublicOnlyRoute><Login /></PublicOnlyRoute>} />
       <Route path="/signup" element={<PublicOnlyRoute><SignUp /></PublicOnlyRoute>} />
 
