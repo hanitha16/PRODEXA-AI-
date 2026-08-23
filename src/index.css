@@ -1,0 +1,58 @@
+/* ?? Base Reset (light-safe ? no forced dark background) ?? */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  /* Reset the Vite starter layout constraints ? 
+     let each page control its own layout */
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  text-align: unset;
+  border-inline: none;
+  min-height: 100vh;
+  display: block;
+}
+
+/* ?? Utility ?? */
+button { font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+code { font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace; }
+
+/* ?? Light page resets (Splash / Login / SignUp) ?? */
+/* These pages manage their own full-viewport layout inline. */
+
+/* ?? Spin animation used globally (processing indicators) ?? */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.9; transform: scale(1.08); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
