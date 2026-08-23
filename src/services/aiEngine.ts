@@ -160,18 +160,6 @@ export class AIEngine {
       };
     }
 
-    if (text.includes("pressure") || text.includes("bar") || text.includes("psi") || text.includes("sensor") && !text.includes("temperature") || partNumber.startsWith("PS-")) {
-      return {
-        name: `${brand || "Industrial"} ${partNumber} Pressure Sensor`,
-        brand: brand || "Acme Industrial",
-        category: "Pressure Sensors",
-        subcategory: "Piezoresistive Transmitters",
-        productFamily: "Industrial Process Sensors",
-        confidence: 98,
-        matchStatus: "HIGH CONFIDENCE",
-      };
-    }
-
     if (text.includes("motor") || text.includes("rpm") || text.includes("induction") || text.includes("three-phase") || partNumber.startsWith("MTR-")) {
       return {
         name: `${brand || "Industrial"} ${partNumber} Three-Phase Motor`,
@@ -216,6 +204,18 @@ export class AIEngine {
         subcategory: "Hydraulic Pressure Line Filters",
         productFamily: "Industrial Filtration Systems",
         confidence: 96,
+        matchStatus: "HIGH CONFIDENCE",
+      };
+    }
+
+    if (text.includes("pressure") || text.includes("bar") || text.includes("psi") || text.includes("sensor") && !text.includes("temperature") || partNumber.startsWith("PS-")) {
+      return {
+        name: `${brand || "Industrial"} ${partNumber} Pressure Sensor`,
+        brand: brand || "Acme Industrial",
+        category: "Pressure Sensors",
+        subcategory: "Piezoresistive Transmitters",
+        productFamily: "Industrial Process Sensors",
+        confidence: 98,
         matchStatus: "HIGH CONFIDENCE",
       };
     }

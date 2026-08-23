@@ -47,6 +47,7 @@ export function createEmptyOutputRow(): ExpectedOutputRow {
 export function mapProductToOutputRow(product: {
   partNumber: string;
   name: string;
+  description?: string;
   brand: string;
   category: string;
   qualityScore: number;
@@ -57,7 +58,7 @@ export function mapProductToOutputRow(product: {
 }): ExpectedOutputRow {
   return {
     "Part Number": product.partNumber,
-    "Product Name": product.name,
+    "Product Name": product.description || product.name,
     "Brand": product.brand,
     "Category": product.category,
     "Quality Score": product.qualityScore,

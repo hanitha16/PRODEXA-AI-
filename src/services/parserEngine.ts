@@ -96,15 +96,21 @@ export class ParserEngine {
       let mappedField: ColumnMapping["mappedField"] = "custom";
       let confidence = 70;
 
-      if (lower.includes("code") || lower.includes("part") || lower.includes("sku") || lower.includes("item") || lower.includes("model")) {
-        mappedField = "partNumber";
-        confidence = 98;
-      } else if (lower.includes("manufacturer") || lower.includes("brand") || lower.includes("vendor") || lower.includes("make")) {
+      if (lower.includes("manufacturer") || lower.includes("brand") || lower.includes("vendor") || lower.includes("make")) {
         mappedField = "brand";
         confidence = 98;
-      } else if (lower.includes("desc") || lower.includes("detail") || lower.includes("title") || lower.includes("name") || lower.includes("product")) {
+      } else if (lower.includes("desc") || lower.includes("detail") || lower.includes("title")) {
         mappedField = "description";
         confidence = 95;
+      } else if (lower.includes("code") || lower.includes("part") || lower.includes("sku") || lower.includes("model")) {
+        mappedField = "partNumber";
+        confidence = 98;
+      } else if (lower.includes("name") || lower.includes("product")) {
+        mappedField = "description";
+        confidence = 95;
+      } else if (lower.includes("item")) {
+        mappedField = "partNumber";
+        confidence = 98;
       } else if (lower.includes("volt") || lower.includes("supply")) {
         mappedField = "voltage";
         confidence = 96;
